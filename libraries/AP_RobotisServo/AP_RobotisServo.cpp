@@ -101,6 +101,8 @@ extern const AP_HAL::HAL& hal;
 
 #define REG_GOAL_POSITION 116
 
+#define REG_PROFILE_VELOCITY 112
+
 // how many times to send servo configure msgs
 #define CONFIGURE_SERVO_COUNT 4
 
@@ -252,6 +254,9 @@ void AP_RobotisServo::configure_servos(void)
 
     // enable torque control
     send_command(BROADCAST_ID, REG_TORQUE_ENABLE, 1, 1);
+    
+    // enable Speed control
+    send_command(BROADCAST_ID, REG_PROFILE_VELOCITY, 8000, 4);
 }
 
 
